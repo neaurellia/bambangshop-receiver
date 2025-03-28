@@ -24,7 +24,7 @@ The notification will be sent using HTTP POST request, so you need to make the r
 
 ## API Documentations
 
-You can download the Postman Collection JSON here: https://ristek.link/AdvProgWeek7Postman
+You can download the Postman Collection JSON here: https://api.postman.com/collections/1518342-1ab29a75-95d2-4e61-a257-0971e15b75a0?access_key=PMAT-01HT9WP343FDK3QKB7HGE2AKHJ
 
 After you download the Postman Collection, you can try the endpoints inside "BambangShop Receiver" folder.
 
@@ -60,13 +60,15 @@ You can install Postman via this website: https://www.postman.com/downloads/
 
 ## Mandatory Checklists (Subscriber)
 -   [ ] Clone https://gitlab.com/ichlaffterlalu/bambangshop-receiver to a new repository.
--   **STAGE 1: Implement models and repositories**
+-   **STAGE 1: Implement models**
     -   [ ] Commit: `Create Notification model struct.`
     -   [ ] Commit: `Create SubscriberRequest model struct.`
+    -   [ ] Write answers of your learning module's "Reflection Subscriber-1" questions in this README.
+-   **STAGE 2: Implement repositories**
     -   [ ] Commit: `Create Notification database and Notification repository struct skeleton.`
     -   [ ] Commit: `Implement add function in Notification repository.`
     -   [ ] Commit: `Implement list_all_as_string function in Notification repository.`
-    -   [ ] Write answers of your learning module's "Reflection Subscriber-1" questions in this README.
+    -   [ ] Write answers of your learning module's "Reflection Subscriber-2" questions in this README.
 -   **STAGE 3: Implement services and controllers**
     -   [ ] Commit: `Create Notification service struct skeleton.`
     -   [ ] Commit: `Implement subscribe function in Notification service.`
@@ -77,7 +79,7 @@ You can install Postman via this website: https://www.postman.com/downloads/
     -   [ ] Commit: `Implement receive function in Notification controller.`
     -   [ ] Commit: `Implement list_messages function in Notification service.`
     -   [ ] Commit: `Implement list function in Notification controller.`
-    -   [ ] Write answers of your learning module's "Reflection Subscriber-2" questions in this README.
+    -   [ ] Write answers of your learning module's "Reflection Subscriber-3" questions in this README.
 
 ## Your Reflections
 This is the place for you to write reflections:
@@ -85,5 +87,10 @@ This is the place for you to write reflections:
 ### Mandatory (Subscriber) Reflections
 
 #### Reflection Subscriber-1
+1. RwLock<> is used here because it allows multiple readers and a single writer, making it more efficient for cases where reads are more frequent than writes. Mutex<Vec<Notification>> allows only one thread at a time, meaning even if multiple threads only need to read the notifications, they would have to wait for each other. This would cause unnecessary blocking and degrade performance in read-heavy scenarios.
+
+2. In Java, a static variable is shared across all instances, and you can mutate it freely via static methods. Rust, however, prevents direct mutation of static variables unless explicitly made mutable for safety reasons. In Java, mutating a static variable from multiple threads without synchronization can lead to data races.Rust enforces memory safety at compile-time. By default, static variables are immutable to prevent race conditions.
 
 #### Reflection Subscriber-2
+
+#### Reflection Subscriber-3
