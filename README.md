@@ -92,5 +92,13 @@ This is the place for you to write reflections:
 2. In Java, a static variable is shared across all instances, and you can mutate it freely via static methods. Rust, however, prevents direct mutation of static variables unless explicitly made mutable for safety reasons. In Java, mutating a static variable from multiple threads without synchronization can lead to data races.Rust enforces memory safety at compile-time. By default, static variables are immutable to prevent race conditions.
 
 #### Reflection Subscriber-2
+1. No. I wanted to fully understand what was going on.
 
-#### Reflection Subscriber-3
+2. The Observer pattern makes it easy to add new subscribers (Receiver instances) by allowing them to dynamically register for specific product types. The publisher maintains a list of subscribers and notifies them when relevant updates occur.
+
+However, running multiple Main app instances introduces challenges like state management, duplicate notifications, and synchronization issues. To handle this, a shared event queue (e.g., Kafka, Redis) or database-backed subscriptions can be used to ensure consistency across instances.
+
+Single instance: Easy to add subscribers dynamically.
+Multiple instances: Requires a distributed approach to manage subscriptions properly.
+
+3. No.
